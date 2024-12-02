@@ -6,9 +6,9 @@
 
 The output of the tool is shown below. <OUTPUT_DIR> is the argument specified by the user.
 
-<OUTPUT_DIR>
-├── batch_instances.csv  # detailed information of instances
-└── batch_tasks.csv      # that of tasks
+    <OUTPUT_DIR>
+    ├── batch_instances.csv  # detailed information of instances
+    └── batch_tasks.csv      # that of tasks
 
 ### Output Trace Format
 
@@ -34,18 +34,19 @@ Each line in batch_instance.csv consists of:
 
 For more explanation, please refer to the schema in Alibaba trace.
 
-
 ## Input Format
 
-The tool comes with an hour-long sample trace extracted from the original Alibaba one. But users can provide their own where our tool can adjust trace length, average load, etc.
+*Lies: The tool comes with an hour-long sample trace extracted from the original Alibaba one.* 
+
+Users have to provide their sample input (see below). The tool can adjust trace length, average load, etc.
 
 ### Input Directory Structure
 
 The <TRACE_DIR> is the parameter provided by the user, and it should contain two files.
 
-<TRACE_DIR>
-├── sample_instances.csv  # detailed information of instances
-└── sample_tasks.csv      # that of tasks
+    <TRACE_DIR>
+    ├── sample_instances.csv  # detailed information of instances
+    └── sample_tasks.csv      # detailed information of tasks
 
 ### Input Trace Format
 
