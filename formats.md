@@ -20,7 +20,7 @@ In batch_tasks.csv, each line contains the following columns:
     duration
     requested CPU: every 100 unit means 1 core
     requested memory: the fraction of 100 unit
-    number of instances
+    number of instances (this will corelate with its entries in batch_instance.csv)
 
 Each line in batch_instance.csv consists of:
 
@@ -32,7 +32,10 @@ Each line in batch_instance.csv consists of:
     average used CPU
     average used memory
 
-For more explanation, please refer to the schema in Alibaba trace.
+For more explanation, please refer to the 
+[schema](https://github.com/alibaba/clusterdata/blob/7358bbaf40778d4bd0464a64a430812088b7b74e/cluster-trace-v2018/schema.txt)
+in the
+[Alibaba trace](https://github.com/alibaba/clusterdata/blob/7358bbaf40778d4bd0464a64a430812088b7b74e/cluster-trace-v2018/trace_2018.md).
 
 ## Input Format
 
@@ -50,8 +53,8 @@ The <TRACE_DIR> is the parameter provided by the user, and it should contain two
 
 ### Input Trace Format
 
-The trace has the same format as the output, but it has several ordering constraint:
+The trace has the same format as the output, but it has several ordering constraints:
 
-    Both traces should be in the ascending order of arrival time.
-    Within the same arrival time, the traces should be ordered by job name.
-    In the same job, the traces should be ordered by task name.
+* Both traces should be in the ascending order of arrival time.
+* Within the same arrival time, the traces should be ordered by job name.
+* In the same job, the traces should be ordered by task name.
