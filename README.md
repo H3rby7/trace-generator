@@ -5,6 +5,12 @@ This command-line tool generates cluster trace in a more controllable manner bas
 [![image](https://img.shields.io/pypi/l/spar.svg)](https://python.org/pypi/spar)
 [![image](https://img.shields.io/pypi/pyversions/spar.svg)](https://python.org/pypi/spar)
 
+## Requirements
+
+Requires the data from Alibaba Cluster Trace 2018.
+
+Requires [input sample files](./formats.md#input-format)
+
 ### Installation
 
 It is recommended to install the tool with `pip3`.
