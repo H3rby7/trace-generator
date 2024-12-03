@@ -7,13 +7,16 @@ This command-line tool generates cluster trace in a more controllable manner bas
 
 ## Requirements
 
-Requires the data from Alibaba Cluster Trace 2018.
-
-Requires [input sample files](./formats.md#input-format)
+Requires [input sample files](./formats.md#input-format).
+These csv files seem to be a mapped extract of their corresponding trace data files from alibaba 2018 trace.
 
 ### Installation
 
 Because [pickle](https://docs.python.org/3/library/pickle.html) has been used on scipy objects to create [distribution files](./spar/data/distributions/), we need the exact scipy version present to deserialize correctly.
+
+The `requirements.txt` has been created from `Pipfile.lock`, by running `pipenv requirements > requirements.txt`
+
+Install dependencies:
 
 ```
 pip install -r requirements.txt
