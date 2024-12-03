@@ -29,37 +29,41 @@ Within the root directory of this project (where this README.md resides.) we can
 ```
 Usage: python -m spar [OPTIONS] OUTPUT_DIR
 
-  By default, we output an hour-long trace from the original Alibaba
-  trace to the OUTPUT_DIR. But you could provide several parameters
-  and we would transform the trace as follows.
+  By default, we output the sample_xxx.csv as they are to the OUTPUT_DIR.
+  But you could provide several parameters to transform the trace as follows.
   1. Up- or down-sample trace according to load-factor. For up-sampling,
-  we replace the dependencies with synthesized ones.
-  1. Adjust resource heterogeneity according to heter-factor.
-  2. Rescale resource request and usage according to machine-conf.
+  we add synthesized jobs, while down-sampling drops jobs of the input sample.
+  2. Adjust resource heterogeneity according to heter-factor.
+  3. Rescale resource request and usage according to machine-conf.
 
   Examples:
 
-  Generate an <input-time-span>-long trace.
-  $ python -m spar <OUTPUT_DIR>
+  Output input trace as is.
+  $ spar <OUTPUT_DIR>
 
-  Generate an <input-time-span>-long trace with 2x jobs.
-  $ python -m spar <OUTPUT_DIR> --load-factor 2
+  Output the input trace located in './input' directory.
+  $ spar <OUTPUT_DIR> --trace-dir ./input
 
-  Generate a half-<input-time-span>-long trace.
-  $ python -m spar <OUTPUT_DIR> --duration 0.5
+  Generate a trace of same lenght as the input with 2x jobs.
+  $ spar <OUTPUT_DIR> --load-factor 2
 
-  Generate an hour-long trace with the resource request and usage deviating
-  from the average 1.5x the original.
-  $ python -m spar <OUTPUT_DIR> --heter-factor 1.5
+  Generate a trace with half the length of the input trace.
+  $ spar <OUTPUT_DIR> --duration 0.5
 
-  Generate an hour-long trace for clusters with 24 cores and 50 unit of memory.
-  $ python -m spar <OUTPUT_DIR> --machine-conf (24, 50)
+  Transforms the input trace with the resource request and usage deviating by 1.5x
+  (on average) from the original resources.
+  $ spar <OUTPUT_DIR> --heter-factor 1.5
+
+  Transforms the input trace resource usage relative to the default machine config (96, 100).
+  In this case requesting only 1/4 of the CPU and half the memory.
+  $ spar <OUTPUT_DIR> --machine-conf (24, 50)
 
 Options:
   --trace-dir PATH                The location of Alibaba trace.
-  --load-factor FLOAT             A factor adjusting the average load (i.e., #
-                                  jobs/hour) of the output trace.
-  --duration FLOAT RANGE          The duration (in relation of the time spanning the sample data) of the trace.
+  --load-factor FLOAT             A factor adjusting the average load of the
+                                  output trace relative to the input trace.
+  --duration FLOAT RANGE          The duration of the output trace relative to
+                                  the input trace.
   --heter-factor FLOAT            A factor adjusting the heterogeneity
                                   (defined as the ratio: value/average) of the
                                   output trace.
