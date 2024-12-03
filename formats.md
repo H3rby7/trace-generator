@@ -39,9 +39,15 @@ in the
 
 ## Input Format
 
-*Lies: The tool comes with an hour-long sample trace extracted from the original Alibaba one.* 
-
 Users have to provide their sample input (see below). The tool can adjust trace length, average load, etc.
+
+The pip-version of the tool comes with an hour-long sample trace extracted from the original Alibaba one (https://github.com/All-less/trace-generator/issues/10#issuecomment-1464038206).
+
+After installation of the tool via `pip install spar` the data resides at:
+
+    /usr/local/lib/python3.7/site-packages/spar/data/samples/*
+
+You may copy these files, or simply run the tool once without extra args, as it will simply output the input trace that way.
 
 ### Input Directory Structure
 
